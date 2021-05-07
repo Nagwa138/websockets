@@ -21,7 +21,7 @@ const app = new Vue({
         Echo.channel("home")
           .listen("NewMessage", (e) => {
             console.log("message");
-    
+
           });
       },
 });
