@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Events\NewMessage;
+// use Auth;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('broadcast', function () {
+    event(new App\Events\NewMessage("h"));
+    return 'DONE';
+});
+
 Route::get('/', function () {
+    Auth::login(User::first() , true);
     return view('welcome');
 });
+
